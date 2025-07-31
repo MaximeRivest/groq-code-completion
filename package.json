@@ -1,0 +1,112 @@
+{
+  "name": "groq-code-completion",
+  "displayName": "Groq Code Completion",
+  "description": "AI-powered code completion using Groq for fast inference",
+  "version": "0.1.0",
+  "publisher": "groq-code-completion",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages", "Snippets", "Other"],
+  "keywords": ["ai", "code completion", "groq", "autocomplete", "llm"],
+  "activationEvents": [
+    "onCommand:groqCodeCompletion.complete"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "groqCodeCompletion.complete",
+        "title": "Groq: Complete Code Section"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "groqCodeCompletion.complete",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Groq Code Completion",
+      "properties": {
+        "groqCodeCompletion.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Groq API key. If not set, will use GROQ_API_KEY environment variable.",
+          "order": 1
+        },
+        "groqCodeCompletion.model": {
+          "type": "string",
+          "default": "mixtral-8x7b-32768",
+          "enum": [
+            "mixtral-8x7b-32768",
+            "llama3-70b-8192",
+            "llama3-8b-8192",
+            "gemma-7b-it",
+            "gemma2-9b-it"
+          ],
+          "enumDescriptions": [
+            "Mixtral 8x7B - Best for code generation (32k context)",
+            "Llama 3 70B - Large, powerful model (8k context)",
+            "Llama 3 8B - Fast, efficient model (8k context)",
+            "Gemma 7B - Lightweight model",
+            "Gemma 2 9B - Improved lightweight model"
+          ],
+          "description": "The Groq model to use for code completion",
+          "order": 2
+        },
+        "groqCodeCompletion.maxTokens": {
+          "type": "number",
+          "default": 2048,
+          "minimum": 128,
+          "maximum": 8192,
+          "description": "Maximum number of tokens to generate",
+          "order": 3
+        },
+        "groqCodeCompletion.temperature": {
+          "type": "number",
+          "default": 0.3,
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Temperature for generation (0.0 = deterministic, 1.0 = creative)",
+          "order": 4
+        },
+        "groqCodeCompletion.streaming": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable streaming responses (shows code as it's generated)",
+          "order": 5
+        },
+        "groqCodeCompletion.contextFileLimit": {
+          "type": "number",
+          "default": 5,
+          "minimum": 0,
+          "maximum": 20,
+          "description": "Maximum number of other open files to include as context",
+          "order": 6
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.x",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "eslint": "^8.x",
+    "typescript": "^5.x"
+  },
+  "dependencies": {
+    "groq-sdk": "^0.7.0"
+  }
+}
