@@ -3,16 +3,31 @@
   "displayName": "Groq Code Completion",
   "description": "AI-powered code completion using Groq for fast inference",
   "version": "0.1.0",
-  "publisher": "groq-code-completion",
+  "publisher": "maximerivest",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maximerivest/groq-code-completion"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
-  "categories": ["Programming Languages", "Snippets", "Other"],
-  "keywords": ["ai", "code completion", "groq", "autocomplete", "llm"],
-  "activationEvents": [
-    "onCommand:groqCodeCompletion.complete"
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
   ],
-  "main": "./out/extension.js",
+  "keywords": [
+    "ai",
+    "code completion",
+    "groq",
+    "autocomplete",
+    "llm"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
@@ -64,8 +79,8 @@
         "groqCodeCompletion.temperature": {
           "type": "number",
           "default": 0.3,
-          "minimum": 0.0,
-          "maximum": 1.0,
+          "minimum": 0,
+          "maximum": 1,
           "description": "Temperature for generation (0.0 = deterministic, 1.0 = creative)",
           "order": 4
         },
@@ -87,20 +102,24 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
     "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.x",
     "@typescript-eslint/parser": "^6.x",
     "eslint": "^8.x",
-    "typescript": "^5.x"
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.x",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "groq-sdk": "^0.7.0"

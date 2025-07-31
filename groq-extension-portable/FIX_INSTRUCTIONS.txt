@@ -1,0 +1,16 @@
+IMPORTANT: Extension Fix for "groq-sdk not found" error
+
+The previous version was missing the bundled dependencies.
+This new version includes all dependencies bundled inside.
+
+To fix:
+1. Uninstall the old extension in VSCode
+2. Install this new groq-code-completion-0.1.0.vsix file
+3. Restart VSCode
+
+The extension now includes:
+- All npm dependencies bundled (including groq-sdk)
+- Automatic activation on VSCode startup
+- No need to install npm packages separately
+
+The extension should work immediately after installation!

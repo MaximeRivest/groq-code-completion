@@ -1,0 +1,9 @@
+IMPORTANT: You need a Groq API key to use this extension!
+
+1. Visit: https://console.groq.com/keys
+2. Sign up or log in to Groq
+3. Create a new API key
+4. Copy the key (it starts with "gsk_")
+5. Add it to VSCode settings as described in INSTALL_INSTRUCTIONS.md
+
+The extension will NOT work without a valid API key!
