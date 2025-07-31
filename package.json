@@ -39,20 +39,16 @@
         },
         "groqCodeCompletion.model": {
           "type": "string",
-          "default": "mixtral-8x7b-32768",
+          "default": "moonshotai/kimi-k2-instruct",
           "enum": [
-            "mixtral-8x7b-32768",
-            "llama3-70b-8192",
-            "llama3-8b-8192",
-            "gemma-7b-it",
-            "gemma2-9b-it"
+            "moonshotai/kimi-k2-instruct",
+            "qwen/qwen3-32b",
+            "llama-3.1-8b-instant"
           ],
           "enumDescriptions": [
-            "Mixtral 8x7B - Best for code generation (32k context)",
-            "Llama 3 70B - Large, powerful model (8k context)",
-            "Llama 3 8B - Fast, efficient model (8k context)",
-            "Gemma 7B - Lightweight model",
-            "Gemma 2 9B - Improved lightweight model"
+            "Kimi-k2, The best",
+            "Qwen3-32B",
+            "Llama 3 8B - Fast, efficient model"
           ],
           "description": "The Groq model to use for code completion",
           "order": 2
