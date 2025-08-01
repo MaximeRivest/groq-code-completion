@@ -1,6 +1,6 @@
 # Groq Code Completion for VSCode
 
-AI-powered code completion using Groq's lightning-fast inference API. Get intelligent code suggestions with low latency using models like Mixtral, Llama 3, and more.
+AI-powered code completion using Groq's lightning-fast inference API. Get intelligent code suggestions with low latency using models like Kimi-K2, Llama 4, and more.
 
 ## Features
 
